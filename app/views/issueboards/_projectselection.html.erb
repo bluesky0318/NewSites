@@ -1,0 +1,16 @@
+<% @projectcontrols.each do |prjctrl| %>
+	<tr>
+		<td>
+			<%= check_box_tag 'selected_project[]', prjctrl.id, false, :onclick => "findProjectInfo(this)"%><%= prjctrl.projectname %>
+		</td>
+		<td>
+			<%= prjctrl.hwplatform.hwcode %>
+		</td>
+		<td>
+			<%= prjctrl.customerlist.companydescription %>
+		</td>
+		<td>
+			<%= prjctrl.assignedto.email %>
+		</td>
+	</tr>
+<% end %>

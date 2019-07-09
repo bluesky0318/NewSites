@@ -1,0 +1,57 @@
+<div class="tabbable">
+	<ul class="nav nav-tabs ">
+		<li class="active"><a data-toggle="tab" href="#home">Select project </a></li>
+		<li><a data-toggle="tab" href="#menu1">Release information</a></li>
+	</ul>
+	<%= form_for(@releasecenter) do |f| %>
+		<div class="tab-content">
+			<div id="home" class="tab-pane fade in active">
+				<div class="col-md-12">
+					<div align="left" style="float:left;">
+						<h4 class="sub-header">
+								<h4>Select 1 or more project(s) that it belongs to</h4>
+								<br/>
+						</h4>
+					</div>
+					<div align="right" style="float:right;"><label class="checkbox"><%= check_box_tag 'myonly', '1', false, :onclick => "sort_tinyproject(this.value)" %>Show my projects only</label></div>
+				</div>
+				<div class="col-md-12">
+					<%= render  :partial => "/common/projectselection",
+											:locals => {:multi => false} %>
+				</div>
+
+				<div class="col-md-5 fixedposition" id="solvedissue_list"  align="right" style="visibility:hidden;position:fixed;right:10px;top:200px;">
+					<% if @projectcontrol %>
+						<%= render  :partial => "listsolvedissues",
+												:locals => {:action => 'new'} %>
+					<% end %>
+				</div>
+			</div>
+			<div id="menu1" class="tab-pane fade">
+				<div class="col-md-12" id="idformtab" style="visibility: hidden;">
+					<div class="col-md-12">
+						<h4 class="sub-header">
+							<h4 id="idformalert" style="visibility:visible;" >Please select 1 project</h4>
+							<br/>
+						</h4>
+					</div>
+					<div class="col-md-12">
+						<%= render  :partial => "/common/projectselectpartial",
+												:locals => {:multi => true}  %>
+					</div>
+					<div class="col-md-7" style="margin-top:23px">
+						<%= render  :partial => 'releasecenterform',
+												:locals => {:f => f,
+																		:action => 'new'} %>
+					</div>
+					<div class="col-md-5" style="margin-top:23px">
+						<%=render :partial => 'common/useremailnew',
+											:locals => {:f => f, 
+																	:targetid => current_user.id,
+																	:source => 'release' } %>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

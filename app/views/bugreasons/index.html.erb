@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bugreasons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bugdescriptionstring</th>
+      <th>Bugorder</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bugreasons.each do |bugreason| %>
+      <tr>
+        <td><%= bugreason.bugdescriptionstring %></td>
+        <td><%= bugreason.bugorder %></td>
+        <td><%= link_to 'Show', bugreason %></td>
+        <td><%= link_to 'Edit', edit_bugreason_path(bugreason) %></td>
+        <td><%= link_to 'Destroy', bugreason, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bugreason', new_bugreason_path %>

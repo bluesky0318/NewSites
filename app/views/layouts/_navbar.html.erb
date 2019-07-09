@@ -1,0 +1,40 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/"><strong>Cobra Center</strong></a>
+    </div>
+  
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><p class="navbar-brand"><%=help_get_banner2(request.env['PATH_INFO'])%></p></li>
+      </ul>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Create Issue", new_issueboard_path,class:"navbar-brand" %></li> 
+        <li><%= link_to "Create Release", new_releasecenter_path,class:"navbar-brand" %></li> 
+        <li><p class="navbar-brand" href="#">Setting</p></li>
+        <li class="dropdown">
+          <p class="navbar-brand" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></p>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li> 
+            <li role="separator" class="divider"></li>
+            <li><a href="#">View All Projects</a></li>
+            <li><a href="#">View All Issues</a></li>
+            <li><a href="#">View All Releases</a></li>
+            <li><a href="#">View All Project attachments</a></li>
+            <li><a href="#">View All Issues attachments</a></li>
+            <li><a href="#">View All Releases attachments</a></li>
+            <li><a href="#">View All My logs</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">View Statistics</a></li>
+            <li><a href="#">View Log of Auto Update</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+

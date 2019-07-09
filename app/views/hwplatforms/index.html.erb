@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hwplatforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hwnickname</th>
+      <th>Hwcode</th>
+      <th>Hwmajorversion</th>
+      <th>Hwminorversion</th>
+      <th>Hworder</th>
+      <th>Hwdescription</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hwplatforms.each do |hwplatform| %>
+      <tr>
+        <td><%= hwplatform.hwnickname %></td>
+        <td><%= hwplatform.hwcode %></td>
+        <td><%= hwplatform.hwmajorversion %></td>
+        <td><%= hwplatform.hwminorversion %></td>
+        <td><%= hwplatform.hworder %></td>
+        <td><%= hwplatform.hwdescription %></td>
+        <td><%= link_to 'Show', hwplatform %></td>
+        <td><%= link_to 'Edit', edit_hwplatform_path(hwplatform) %></td>
+        <td><%= link_to 'Destroy', hwplatform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hwplatform', new_hwplatform_path %>

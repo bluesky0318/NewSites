@@ -1,0 +1,2 @@
+class ProjectcclistsController < ApplicationController
+end

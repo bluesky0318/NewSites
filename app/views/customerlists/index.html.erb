@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customerlists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Companyname</th>
+      <th>Engineeremail</th>
+      <th>Customerorder</th>
+      <th>Companydescription</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customerlists.each do |customerlist| %>
+      <tr>
+        <td><%= customerlist.companyname %></td>
+        <td><%= customerlist.engineeremail %></td>
+        <td><%= customerlist.customerorder %></td>
+        <td><%= customerlist.companydescription %></td>
+        <td><%= link_to 'Show', customerlist %></td>
+        <td><%= link_to 'Edit', edit_customerlist_path(customerlist) %></td>
+        <td><%= link_to 'Destroy', customerlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customerlist', new_customerlist_path %>

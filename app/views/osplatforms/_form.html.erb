@@ -1,0 +1,32 @@
+<%= form_for(osplatform) do |f| %>
+  <% if osplatform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(osplatform.errors.count, "error") %> prohibited this osplatform from being saved:</h2>
+
+      <ul>
+      <% osplatform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :categoryproject_id %>
+    <%= f.text_field :categoryproject_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :osdescribe %>
+    <%= f.text_field :osdescribe %>
+  </div>
+
+  <div class="field">
+    <%= f.label :osorder %>
+    <%= f.number_field :osorder %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

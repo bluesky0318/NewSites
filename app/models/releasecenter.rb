@@ -1,0 +1,2 @@
+class Releasecenter < ApplicationRecord
+end

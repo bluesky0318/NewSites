@@ -1,0 +1,2 @@
+class Projectcclist < ApplicationRecord
+end

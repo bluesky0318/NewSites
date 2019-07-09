@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bugdescriptionstring:</strong>
+  <%= @bugreason.bugdescriptionstring %>
+</p>
+
+<p>
+  <strong>Bugorder:</strong>
+  <%= @bugreason.bugorder %>
+</p>
+
+<%= link_to 'Edit', edit_bugreason_path(@bugreason) %> |
+<%= link_to 'Back', bugreasons_path %>

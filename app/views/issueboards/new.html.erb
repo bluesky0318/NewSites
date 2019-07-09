@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			//var Ischecked = 0;
+			var Arrchecked = [];
+			function findProjectInfo(vobj) {
+				var formData = new FormData();
+				var vIndexof = -1;
+				var objtbody = document.getElementById("tbodyfixedscroll");
+				formData.append('projectid', vobj.value);
+				if(objtbody.hasChildNodes)
+				{
+					var eleTR = objtbody.childNodes;
+					//alert(eleTR);
+					for (var i=0,len=eleTR.length;i<len;i++)
+					{
+						　　//alert(eleTR[i].id);
+						//if($.isNumeric(eleTR.id))
+						if(eleTR[i].id == vobj.value)
+						{
+							if(vobj.checked==true)
+							{
+								//Ischecked += 1;
+								Arrchecked.push(vobj.value);
+								//alert(Arrchecked);
+								eleTR[i].style.display='';
+							}
+							else
+							{
+								//Ischecked -= 1;
+								vIndexof = Arrchecked.indexOf(vobj.value);
+								if(vIndexof != -1)
+								{
+									Arrchecked.splice(vIndexof, 1);
+									//alert(Arrchecked);
+									//alert(Arrchecked);
+								}
+								eleTR[i].style.display='none';
+							}
+							//alert(eleTR[i].id);
+						}
+					}
+				}
+				Arrchecked.sort();
+				//if(Ischecked > 0)
+				if(Arrchecked.length > 0)
+				{
+					document.getElementById("idformtab").style.visibility = 'visible';
+					//document.getElementById("idformalert").style.visibility = 'hidden';
+					document.getElementById("idformalert").innerHTML="Project(s) selected:";
+				}
+				else
+				{
+					document.getElementById("idformtab").style.visibility = 'hidden';
+					//document.getElementById("idformalert").style.visibility = 'visible';
+					document.getElementById("idformalert").innerHTML="Please select at least 1 project";
+					//if(Ischecked < 0)
+						//Ischecked = 0;
+				}
+				$.ajax({
+					url: "/issueboards/search_selected_project",
+					data:formData,//"projectid="+vvalue,
+					type: "POST",
+					cache:false,
+					contentType:false,
+					processData:false,
+					type: "POST",
+					dataType:"script"
+				});
+			}
+			
+			function sort_tinyproject(selectvalue) {
+				var reselectvalue = selectvalue;
+				var bcheck = 'false';
+				if(selectvalue == '1')
+					if(reselectvalue == document.getElementById('myonly').checked)
+					{
+						reselectvalue = '1';
+						bcheck = 'true';
+					}
+					else
+						reselectvalue = '0';
+				else
+					bcheck = document.getElementById('myonly').checked;
+				//alert(reselectvalue);
+				Ischecked = 0;
+				document.getElementById("idformtab").style.visibility = 'hidden';
+				document.getElementById("idformalert").style.visibility = 'visible';
+				var objtbody = document.getElementById("tbodyfixedscroll");
+				if(objtbody.hasChildNodes)
+				{
+					var eleTR = objtbody.childNodes;
+					for(var j=0; j<Arrchecked.length; j++)
+					{
+						for (var i=0,len=eleTR.length;i<len;i++)
+						{
+							if(eleTR[i].id == Arrchecked[j])
+							{
+								eleTR[i].style.display='none';
+								break;
+							}
+						}
+					}
+					Arrchecked = [];
+				}				
+				var formData = new FormData();
+				formData.append('sorttype', reselectvalue);
+				formData.append('checked', bcheck);
+				$.ajax({
+					url: "/issueboards/sort_tinyproject_by_select",
+					data: formData,//
+					cache:false,
+					contentType:false,
+					processData:false,
+					type: "POST",
+					dataType:"script"
+				});
+			}
+
+
+		</script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="tabbable">
+				<ul class="nav nav-tabs ">
+					<li class="active"><a data-toggle="tab" href="#home">Select project(s) </a></li>
+					<li><a data-toggle="tab" href="#menu1">Issue information</a></li>
+				</ul>
+				<%= form_for(@issueboard) do |f| %>
+					<div class="tab-content">
+						<div id="home" class="tab-pane fade in active">
+							<div class="col-md-12">
+								<div align="left" style="float:left;">
+									<h4 class="sub-header">
+											<h4>Select 1 or more project(s) that issue belongs to</h4>
+											<br/>
+									</h4>
+								</div>
+								<div align="right" style="float:right;"><label class="checkbox"><%= check_box_tag 'myonly', '1', false, :onclick => "sort_tinyproject(this.value)" %>Show my project only</label></div>
+							</div>
+							<div class="col-md-12">
+										<% if @issueboard.errors.include?(:projectcontrol_id) %>
+											<p id="iderrorprojectcontrol"><h4>
+												<%= render	:partial => 'common/listvalidationerrors',
+																		:locals => {:errors => @issueboard.errors,
+																								:keycol => :projectcontrol_id} %>
+											</h4></p>
+										<% end %>
+										<% if @issueboard.errors.include?(:issuesummary) %>
+											<p id="iderrorsummary">
+												<%= render	:partial => 'common/listvalidationerrors',
+																		:locals => {:errors => @issueboard.errors,
+																								:keycol => :issuesummary} %>
+											</p>
+										<% end %>
+										<% if @issueboard.errors.include?(:issuedescription) %>
+											<p id="iderrordes">
+												<%= render	:partial => 'common/listvalidationerrors',
+																		:locals => {:errors => @issueboard.errors,
+																								:keycol => :issuedescription} %>
+											</p>
+										<% end %>
+								<%= render  :partial => "/common/projectselection",
+															:locals => {:multi => true}  %>
+							</div>
+							<div class="col-md-4" id="projectinfo_list" align="right" style="position:fixed;right:10px;">
+							</div>
+						</div>
+						<div id="menu1" class="tab-pane fade">
+							<div class="col-md-12" id="idformtab" style="visibility: hidden;">
+								<div class="col-md-12">
+									<h4 class="sub-header">
+										<h4 id="idformalert" style="visibility:visible;" >Please select at least 1 project</h4>
+										<br/>
+									</h4>
+								</div>
+								<div class="col-md-12">
+									<%= render  :partial => "/common/projectselectpartial",
+															:locals => {:multi => true}  %>
+								</div>
+								<div class="col-md-7" style="margin-top:23px">
+									<%= render :partial => 'issueboardform',
+															:locals => {:f => f,
+																				:action => 'new'} %>
+								</div>
+<%
+=begin 
+%>
+								<div class="col-md-5" id="idassign" style="margin-top:23px">
+									<%=render :partial => 'common/useremailnew',
+														:locals => {:f => f,
+																				:targetid => current_user.id,
+																				:source => 'issue' } %>
+								</div>
+<%
+=end 
+%>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</body>
+</html>
+

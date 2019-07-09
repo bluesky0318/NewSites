@@ -1,0 +1,13 @@
+<table class="table table-striped tablealginblock">
+	<thead>
+		<tr>
+			<th class="col-md-3"><%= link_to "ProjectName",'javascript:;', :onclick => "sort_tinyproject(2)"%></th>
+			<th class="col-md-1"><%= link_to "HWPlatform", 'javascript:;', :onclick => "sort_tinyproject(3)"%></th>
+			<th class="col-md-1"><%= link_to "Customer", 'javascript:;', :onclick => "sort_tinyproject(4)"%></th>
+			<th class="col-md-1"><%= link_to "Owner", 'javascript:;', :onclick => "sort_tinyproject(5)"%></th>
+		</tr>
+	</thead>
+	<tbody id="tbodyscroll">
+		<%= render :partial => 'projectselection'%>
+	</tbody>
+</table>

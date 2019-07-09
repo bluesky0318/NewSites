@@ -1,0 +1,2 @@
+module BugreasonsHelper
+end

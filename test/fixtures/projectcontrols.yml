@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  projectname: MyString
+  projectcode: MyString
+  prjdescription: MyText
+  cclist: MyString
+
+two:
+  projectname: MyString
+  projectcode: MyString
+  prjdescription: MyText
+  cclist: MyString

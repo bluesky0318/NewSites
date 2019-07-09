@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Osplatforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Categoryproject</th>
+      <th>Osdescribe</th>
+      <th>Osorder</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @osplatforms.each do |osplatform| %>
+      <tr>
+        <td><%= osplatform.categoryproject %></td>
+        <td><%= osplatform.osdescribe %></td>
+        <td><%= osplatform.osorder %></td>
+        <td><%= link_to 'Show', osplatform %></td>
+        <td><%= link_to 'Edit', edit_osplatform_path(osplatform) %></td>
+        <td><%= link_to 'Destroy', osplatform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Osplatform', new_osplatform_path %>

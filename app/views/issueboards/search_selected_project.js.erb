@@ -1,0 +1,9 @@
+$('#projectinfo_list').html("");
+$('#issue_projectname').html("<%=  @projectcontrol.projectname %>");
+$('#issue_projectcategory').html("<%= @projectcontrol.categoryproject.categoryprojectstring %>");
+$('#issue_projecttype').html("<%= @projectcontrol.osplatform.osdescribe %>");
+$('#issue_projectplatform').html("<%= @projectcontrol.hwplatform.hwcode %>");
+$('#issue_projectcustomer').html("<%= @projectcontrol.customerlist.companyname %>");
+$('#issue_issuecustomer').html("<%= j select_tag :customerlist_id, options_from_collection_for_select(@customerlists, "id", "companyname", @projectcontrol.customerlist_id), {:multiple => false, :class=> "form-control"} %>")
+$('#issueboard_assignedto_id').html("<%users_array = User.where('visible = ? AND role <> ?', "true", "user").order("email").map { |user| [user.email, user.id] }%> <%= j options_for_select(users_array, multiple: false, size: 1, selected: @projectcontrol.assignedto_id, class: 'form-control') %>")
+$('#issueboard_cclist').html("<%= j options_for_select(users_array, multiple: true, size: 5, selected: @projectcontrol.cclist, class: 'form-control') %>")

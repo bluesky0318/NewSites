@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hwnickname: MyString
+  hwcode: MyString
+  hwmajorversion: MyString
+  hwminorversion: 1
+  hworder: 1
+  hwdescription: MyText
+
+two:
+  hwnickname: MyString
+  hwcode: MyString
+  hwmajorversion: MyString
+  hwminorversion: 1
+  hworder: 1
+  hwdescription: MyText

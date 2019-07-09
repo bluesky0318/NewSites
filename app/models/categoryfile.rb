@@ -1,0 +1,2 @@
+class Categoryfile < ApplicationRecord
+end

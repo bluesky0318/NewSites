@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  categoryproject: one
+  osdescribe: MyString
+  osorder: 1
+
+two:
+  categoryproject: two
+  osdescribe: MyString
+  osorder: 1

@@ -1,0 +1,47 @@
+<%= form_for(hwplatform) do |f| %>
+  <% if hwplatform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hwplatform.errors.count, "error") %> prohibited this hwplatform from being saved:</h2>
+
+      <ul>
+      <% hwplatform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hwnickname %>
+    <%= f.text_field :hwnickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hwcode %>
+    <%= f.text_field :hwcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hwmajorversion %>
+    <%= f.text_field :hwmajorversion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hwminorversion %>
+    <%= f.number_field :hwminorversion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hworder %>
+    <%= f.number_field :hworder %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hwdescription %>
+    <%= f.text_area :hwdescription %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

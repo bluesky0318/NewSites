@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hwnickname:</strong>
+  <%= @hwplatform.hwnickname %>
+</p>
+
+<p>
+  <strong>Hwcode:</strong>
+  <%= @hwplatform.hwcode %>
+</p>
+
+<p>
+  <strong>Hwmajorversion:</strong>
+  <%= @hwplatform.hwmajorversion %>
+</p>
+
+<p>
+  <strong>Hwminorversion:</strong>
+  <%= @hwplatform.hwminorversion %>
+</p>
+
+<p>
+  <strong>Hworder:</strong>
+  <%= @hwplatform.hworder %>
+</p>
+
+<p>
+  <strong>Hwdescription:</strong>
+  <%= @hwplatform.hwdescription %>
+</p>
+
+<%= link_to 'Edit', edit_hwplatform_path(@hwplatform) %> |
+<%= link_to 'Back', hwplatforms_path %>

@@ -1,0 +1,37 @@
+<%= form_for(customerlist) do |f| %>
+  <% if customerlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customerlist.errors.count, "error") %> prohibited this customerlist from being saved:</h2>
+
+      <ul>
+      <% customerlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :companyname %>
+    <%= f.text_field :companyname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :engineeremail %>
+    <%= f.text_field :engineeremail %>
+  </div>
+
+  <div class="field">
+    <%= f.label :customerorder %>
+    <%= f.number_field :customerorder %>
+  </div>
+
+  <div class="field">
+    <%= f.label :companydescription %>
+    <%= f.text_area :companydescription %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

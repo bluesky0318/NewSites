@@ -1,0 +1,2 @@
+class Bugreason < ApplicationRecord
+end

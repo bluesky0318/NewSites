@@ -1,0 +1,22 @@
+<% @projectcontrols.each do |prjctrl| %>
+	<tr id="<%=prjctrl.id%>" style="display:none">
+		<td class="col-md-3">
+			<%= prjctrl.projectname %>
+		</td>
+		<td class="col-md-2">
+			<%= prjctrl.projectcode %>
+		</td>
+		<td class="col-md-2">
+			<%= prjctrl.osplatform.osdescribe %>
+		</td>
+		<td class="col-md-1">
+			<%= prjctrl.hwplatform.hwcode %>
+		</td>
+		<td class="col-md-2">
+			<%= prjctrl.customerlist.companydescription %>
+		</td>
+		<td class="col-md-2">
+			<%= prjctrl.assignedto.email %>
+		</td>
+	</tr>
+<% end %>

@@ -1,0 +1,27 @@
+<%= form_for(categoryfile) do |f| %>
+  <% if categoryfile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(categoryfile.errors.count, "error") %> prohibited this categoryfile from being saved:</h2>
+
+      <ul>
+      <% categoryfile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :categoryfilestring %>
+    <%= f.text_field :categoryfilestring %>
+  </div>
+
+  <div class="field">
+    <%= f.label :categoryfileorder %>
+    <%= f.number_field :categoryfileorder %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
